@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <transition name="router-fade" mode="out-in">
+        <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -13,5 +15,11 @@ export default {
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+.router-fade-enter-active, .router-fade-leave-active {
+  transition: opacity .2s;
+}
+.router-fade-enter, .router-fade-leave-active {
+  opacity: 0;
 }
 </style>

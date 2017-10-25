@@ -103,7 +103,7 @@
 					break;
 
 					case 3:
-						alert("选择了->"+ index)
+						this.log("选择了->"+ index)
 					break;
 				}
 			},
