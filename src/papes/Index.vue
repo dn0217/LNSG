@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import ShowHeader from '../components/ShowHeader.vue'
+import ShowHeader from './ShowHeader.vue'
+
 
 export default {
   name: 'index',

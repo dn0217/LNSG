@@ -1,6 +1,6 @@
-# papes
+# dnBlog
 
-> papes
+> dnBlog
 
 ## Build Setup
 
