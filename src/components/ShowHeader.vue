@@ -67,7 +67,7 @@
 
 <style lang="scss" scoped>
 	#header{
-		background-image: url(../../static/images/dn.jpg);
+		background: #24242a;
 	}
 	.showHeader{
 		width: 100%;
