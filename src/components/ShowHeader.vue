@@ -6,7 +6,7 @@
 				<ul>
 					<li v-for="list in nav" :class='list.isChooes ? "active" : "" ' @click="toDream(list.type)">
 						<p></p>
-						<router-link to="">{{ list.titleName }}</router-link>
+						<router-link :to="list.link">{{ list.titleName }}</router-link>
 						<p></p>
 					</li>
 				</ul>
@@ -24,27 +24,32 @@
 					{
 						titleName: 'HOME',
 						type: 0,
-						isChooes:true
+						isChooes:true,
+						link:'/'
 					}, 
 					{
 						titleName: 'WORKS',
 						type: 1,
-						isChooes:false
+						isChooes:false,
+						link:'Works'
 					},
 					{
 						titleName: 'NOTE',
 						type: 2,
-						isChooes:false
+						isChooes:false,
+						link:'Note'
 					},
 					{
 						titleName: 'TALK',
 						type: 3,
-						isChooes:false
+						isChooes:false,
+						link:'Talk'
 					},
 					{
-						titleName: 'ABOUT ME',
+						titleName: 'ABOUT',
 						type: 4,
-						isChooes:false
+						isChooes:false,
+						link:'About'
 					}
 				]
 			}
@@ -52,7 +57,7 @@
 
 	  	methods:{
 	  		toDream(type){
-	  			this.log(type)
+	  			this.nav.forEach((ele, i) => ele.isChooes = type === i ? true : false)
 	  		}
 	  	}
 
@@ -62,7 +67,7 @@
 
 <style lang="scss" scoped>
 	#header{
-		background: #000;
+		background-image: url(../../static/images/dn.jpg);
 	}
 	.showHeader{
 		width: 100%;

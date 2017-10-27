@@ -56,3 +56,8 @@ li, ol {
 .poa {
 	position: absolute;
 }
+.container{
+    width:1200px;
+    height:1500px;
+    margin:0 auto;
+  }

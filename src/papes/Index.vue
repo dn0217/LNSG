@@ -1,12 +1,14 @@
 <template>
-  <div class="index">
-    <ShowHeader></ShowHeader>
+  <div class="index container">
+    <div class="logo">
+        <div class="logoArea"></div>
+    </div>
+    <Banner></Banner>
   </div>
 </template>
 
 <script>
-import ShowHeader from './ShowHeader.vue'
-
+import Banner from '../components/Banner.vue'
 
 export default {
   name: 'index',
@@ -16,18 +18,30 @@ export default {
       
     }
   },
+  created(){
+    
+  },
 
   methods:{
   	
   },
 
-  components:{
-    ShowHeader
+  components: {
+    Banner
   }
 
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   
+  .logo{
+      padding:35px 0;
+    .logoArea{
+      width: 363px;
+      height:95px;
+      background: url(../../static/images/logo.png);
+      margin:0 auto;
+    }
+  }
 </style>
