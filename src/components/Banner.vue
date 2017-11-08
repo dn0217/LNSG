@@ -1,7 +1,7 @@
 <template>
   <swiper :options="swiperOption" ref="mySwiper" class="slide">
-    <swiper-slide v-for="list in images">
-      <img :src="list" alt="">
+    <swiper-slide v-for="img in images">
+      <img :src="img" alt="">
     </swiper-slide>
     <div class="swiper-button-prev btn" slot="button-prev"></div>
     <div class="swiper-button-next btn" slot="button-next"></div>
@@ -11,7 +11,7 @@
 <script>
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
   export default {
-    name: 'carrousel',
+    
     data() {
       return {
         swiperOption: {

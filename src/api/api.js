@@ -22,32 +22,16 @@ axios.interceptors.response.use(
 )
 
 export default {
+    // 获取导航栏
+    getNav(param) {
+      return axios.get('/nav/check', param, config)
+    },
     // 获取所有文章列表
     getActicle(param) {
-      return axios.get('/article/allRelease', param, config)
+      return axios.get('/acticle/allActicle', param, config)
     },
-    // 获取推荐新闻列表
-    getNews(param) {
-      return axios.get('/news/allRelease', param, config)
-    },
-    // 获取推荐新闻列表
-    getRecommended(param) {
-      return axios.get('/article/getRecommended', param, config)
-    },
-    // 文章详情
-    articleDetail(param) {
-      return axios.get('/article/release/' + param, param, config)
-    },
-    //获取用户信息
-    getUserInfo(param) {
-      return axios.get('/userInfo/detailInfo/' + param, param, config)
-    },
-    //评论
-    commentActicle(param) {
-      return axios.post('/article/comment', param)
-    },
-    //获取个人的文章评论状态
-    acticleState(param) {
-      return axios.get('/article/comment/state?author=' + param.author + '&acticle=' + param.acticle, param)
-    },
+    // 获取指定文章
+    getOneActicle(param) {
+      return axios.get('/acticle/oneActicle/' + param, param, config)
+    }
 }

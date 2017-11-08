@@ -1,12 +1,12 @@
 <template>
 	<div id="header">
 		<div class="showHeader">
-			<div class="container">
+			<div class="container ">
 				<div class="log">DN BLOG</div>
 				<ul>
-					<li v-for="list in nav" :class='list.isChooes ? "active" : "" ' @click="toDream(list.type)">
+					<li v-for="(list, index) in nav" :class='list.isChooes ? "active" : "" ' @click="toDream(list.type, index)">
 						<p></p>
-						<router-link :to="list.link">{{ list.titleName }}</router-link>
+						<span>{{ list.titleName }}</span>
 						<p></p>
 					</li>
 				</ul>
@@ -20,44 +20,19 @@
 	export default {
 		data(){
 			return {
-				nav: [
-					{
-						titleName: 'HOME',
-						type: 0,
-						isChooes:true,
-						link:'/'
-					}, 
-					{
-						titleName: 'WORKS',
-						type: 1,
-						isChooes:false,
-						link:'Works'
-					},
-					{
-						titleName: 'NOTE',
-						type: 2,
-						isChooes:false,
-						link:'Note'
-					},
-					{
-						titleName: 'TALK',
-						type: 3,
-						isChooes:false,
-						link:'Talk'
-					},
-					{
-						titleName: 'ABOUT',
-						type: 4,
-						isChooes:false,
-						link:'About'
-					}
-				]
+				nav: []
 			}
+		},
+		created(){
+		    this.api.getNav().then(res => {
+		      this.nav = res.data.data
+		    })
 		},
 
 	  	methods:{
-	  		toDream(type){
-	  			this.nav.forEach((ele, i) => ele.isChooes = type === i ? true : false)
+	  		toDream(type, index){
+	  			this.nav.forEach((ele, i) => ele.isChooes = type === i ? 1 : 0)
+	  			this.$router.push(this.nav[index].link)
 	  		}
 	  	}
 
@@ -67,11 +42,15 @@
 
 <style lang="scss" scoped>
 	#header{
+		position: fixed;
+		left:0;
+		top:0;
+		width: 100%;
 		background: #24242a;
 	}
 	.showHeader{
 		width: 100%;
-		height: 50px;
+		height: 82px;
 		padding:16px 0;
 		box-shadow: 0px 1px 9px 1px #cfcfcf;
 		.container{
@@ -79,6 +58,7 @@
 			width:1200px;
 			height: 100%;
 			margin:0 auto;
+			background: #24242a;
 		}
 		.log{
 			width: 20%;
@@ -94,7 +74,8 @@
 			li{
 				line-height: 50px;
 				padding:0 10px;
-			    a{
+				cursor: pointer;
+			    span{
 			    	color:#fff;
 			    	display: block;
 			    }
@@ -110,7 +91,7 @@
 				p{
 					background: #fff;
 				}
-				a{
+				span{
 					color: #FA7535;
 				}
 				p:nth-of-type(1){

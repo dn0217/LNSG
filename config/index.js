@@ -28,12 +28,19 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        '/news': {
+        '/nav': {
             target: 'http://dnxiu.com', 
             changeOrigin:true,
             pathRewrite: {
-                '^/news': '/news'
+                '^/nav': '/nav'
             }
+        },
+        '/acticle': {
+            target: 'http://dnxiu.com/',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/acticle': '/acticle'
+            },
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

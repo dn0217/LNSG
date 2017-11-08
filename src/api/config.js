@@ -20,7 +20,7 @@ export default {
   headers: {
     'Content-Type': 'application/json'
   },
-
+  
   params: {
     // accessToken: ''
   },
@@ -51,3 +51,4 @@ export default {
 
   maxRedirects: 5 // default
 }
+

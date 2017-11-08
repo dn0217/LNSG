@@ -1,6 +1,6 @@
 <template>
 	<div class="talk container">
-		444
+		44
 	</div>
 </template>
 
