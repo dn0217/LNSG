@@ -2,7 +2,7 @@
 	<div class="note container">
 		<div class="detailContent">
 			<p class="title">{{ detail.title }}</p>
-			<p class="contentBlock">{{ detail.note }}</p>
+			<p class="contentBlock" v-html="detail.content"></p>
 		</div>
 	</div>
 </template>
@@ -16,10 +16,29 @@
 		},
 
 		created(){
-			this.api.getOneActicle(this.$route.params.id).then(res => {
-				this.detail = res.data
-			})
+			
 		},
+
+		mounted(){
+			this.getActicle(this.$route.params.id);
+		},
+
+
+		methods: {
+			getActicle(id){
+				this.api.getOneActicle(id).then(res => {
+					this.detail = res.data
+				})
+			}
+		},
+
+		watch: {
+		    
+		    $route(to, from){
+		    	
+			}
+			
+		}
 
 	}
 </script>
@@ -36,5 +55,8 @@
 	}
 	.contentBlock{
 		line-height: 35px;
+	}
+	.container{
+		margin-top:0;
 	}
 </style>

@@ -1,45 +1,78 @@
 <template>
-  <div class="index container">
-   <ul>
-     <li v-for="list in listContent" @click="toDetail(list.id)">
-        <p class="acticleTitle">{{ list.title }}</p>
-        <div class="acticleInfo">
-          <span>作者：{{ list.author }}</span>
-          <span>发布时间：{{ list.time | filterTime}}</span>
-        </div>
-        <p class="acticleNote">{{ list.note }}</p>
-     </li>
-   </ul>
+  <div class="index">
+    <ShowHeader @show-what="geet"></ShowHeader>
+    <div class="container">
+      <ul>
+       <li v-for="list in showList">
+          <router-link :to="'/Detail/'+list.id">
+            <p class="acticleTitle">{{ list.title }}</p>
+            <div class="acticleInfo">
+              <span>作者：{{ list.author }}</span>
+              <span>发布时间：{{ list.time | filterTime}}</span>
+            </div>
+            <p class="acticleNote" v-html="list.note"></p>
+          </router-link>
+       </li>
+      </ul>
+    </div>
+    <ShowFooter></ShowFooter>
   </div>
 </template>
 
 <script>
-import Banner from '../components/Banner.vue'
-
+import ShowHeader from '../components/ShowHeader.vue'
+import ShowFooter from '../components/ShowFooter.vue'
 export default {
   name: 'index',
 
   data () {
     return {
-      listContent: []
+      allList: [],
+      showList: []
+
     }
   },
+
   created(){
+    
     this.api.getActicle().then(res => {
-      this.log(res)
-      this.listContent = res.data.data
+      this.allList = res.data.data.reverse();
+      this.showList = res.data.data;
     })
     
   },
 
-  methods:{
-  	toDetail(id){
-      this.$router.push('/Detail/'+id)
+  methods: {
+    geet(typeList){
+      switch( typeList ){
+        case 0:
+          this.showList = this.allList;
+          break;
+
+        case 4:
+          alert('暂没有个人信息哦！')
+          break;
+
+        default:
+          this.showList = [];
+          this.allList.forEach(ele => {
+            if( ele.type == typeList ){
+              this.showList.push(ele)
+            }
+          })
+          break;
+      }
     }
   },
 
+  watch: {
+    
+  },
+
+
   components: {
-    Banner
+    ShowHeader,
+    ShowFooter
   }
 
 }
@@ -48,7 +81,7 @@ export default {
 <style lang="scss" scoped>
   ul li{
     width: 100%;
-    padding:10px;
+    padding:20px 30px;
     line-height: 30px;
     overflow: hidden;
     cursor: pointer;

@@ -1,18 +1,27 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
-import state from './state'
-import mutations from './mutations'
-import actions from './action'
-import getters from './getters'
-
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-	state,
-	actions,
-	mutations,
-	getters
+	state: {
+		'isShowHeader': true
+	},
+
+	actions: {
+		isShowHeader({ commit }, platform){
+			commit('isShowHeader', platform)
+		}
+	},
+	
+	mutations: {
+		isShowHeader(state, platform){
+			state.isShowHeader = platform;
+		}
+	},
+
+	getters: {	
+        isShowHeader : state => state.isShowHeader   
+	}
 })
 
 export default store

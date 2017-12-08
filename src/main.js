@@ -3,8 +3,7 @@ import App from './App'
 import router from './router'
 import store from './vuex/store'
 import api from "./api/api"
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-Vue.use(VueAwesomeSwiper)
+
 Vue.config.productionTip = false
 let type = 'dev' 
 Vue.prototype.log = msg =>  'dev' == 'dev' ? console.log(msg) : void 0;
@@ -12,7 +11,7 @@ Vue.prototype.api = api
 
 Vue.filter('filterTime', time => {
 	if (time) {
-			time = parseInt(time*1000)
+			time = parseInt(time)
 			var oDate = new Date(time);
 			var y = oDate.getFullYear();
 			var m = oDate.getMonth() + 1;
@@ -44,7 +43,7 @@ Vue.filter('filterTime', time => {
 					week = "星期六";
 					break
 			}
-			return y + '.' + m + '.' + d + '	' + h + ':' + mm + ':' + s + '	' + week;
+			return y + '.' + m + '.' + d + '	' + week;
 		}
 })
 new Vue({

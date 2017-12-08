@@ -1,10 +1,10 @@
 <template>
 	<div id="header">
 		<div class="showHeader">
-			<div class="container ">
+			<div class="container">
 				<div class="log">DN BLOG</div>
 				<ul>
-					<li v-for="(list, index) in nav" :class='list.isChooes ? "active" : "" ' @click="toDream(list.type, index)">
+					<li v-for="(list, index) in nav" :class='list.isChooes ? "active" : "" ' @click="send(list.type)">
 						<p></p>
 						<span>{{ list.titleName }}</span>
 						<p></p>
@@ -20,7 +20,7 @@
 	export default {
 		data(){
 			return {
-				nav: []
+				nav: [],
 			}
 		},
 		created(){
@@ -30,9 +30,12 @@
 		},
 
 	  	methods:{
-	  		toDream(type, index){
-	  			this.nav.forEach((ele, i) => ele.isChooes = type === i ? 1 : 0)
-	  			this.$router.push(this.nav[index].link)
+	  		send(type){
+	  			this.nav.forEach((ele, i) => {
+	  				ele.isChooes = type === i ? 1 : 0;
+	  			})
+	  			
+	  			this.$emit('show-what', type);
 	  		}
 	  	}
 
@@ -55,7 +58,7 @@
 		box-shadow: 0px 1px 9px 1px #cfcfcf;
 		.container{
 			display: flex;
-			width:1200px;
+			width:1300px;
 			height: 100%;
 			margin:0 auto;
 			background: #24242a;
@@ -78,6 +81,7 @@
 			    span{
 			    	color:#fff;
 			    	display: block;
+			    	letter-spacing: 5px;
 			    }
 				p{	
 				    width: 65px;
