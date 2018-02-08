@@ -1,7 +1,7 @@
 <template>
 	<div id="header">
 		<div class="showHeader">
-			<div class="container">
+			<div class="showHeaderContainer">
 				<div class="log">DN BLOG</div>
 				<ul>
 					<li v-for="(list, index) in nav" :class='list.isChooes ? "active" : "" ' @click="send(list.type)">
@@ -56,7 +56,7 @@
 		height: 82px;
 		padding:16px 0;
 		box-shadow: 0px 1px 9px 1px #cfcfcf;
-		.container{
+		.showHeaderContainer{
 			display: flex;
 			width:1300px;
 			height: 100%;
@@ -68,7 +68,8 @@
 			line-height: 50px;
 			color: #fff;
 			font-size: 35px;
-			font-family: "Helvetica Neue";
+			font-family: "FZShuTi";
+
 		}
 		ul{
 			display: flex;
@@ -78,6 +79,7 @@
 				line-height: 50px;
 				padding:0 10px;
 				cursor: pointer;
+				font-size: 16px;
 			    span{
 			    	color:#fff;
 			    	display: block;

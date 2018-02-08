@@ -1,9 +1,11 @@
 import Qs from 'qs'
 
 export default {
+  //请求的服务器地址
   url: '/',
-  baseURL: process.env.BASE_URL + 'api/',
-
+  baseURL: process.env.BASE_URL,
+  
+  //put/post/patch
   transformRequest: [function(data) {
     // 为了避免qs格式化时对内层对象的格式化先把内层的对象转为
     data = JSON.stringify(data)
@@ -12,17 +14,17 @@ export default {
       // console.log(data)
     return data
   }],
-
+  
   transformResponse: [function(data) {
     return data
   }],
-
+  
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/x-www-form-urlencoded'
   },
   
   params: {
-    // accessToken: ''
+    
   },
 
   paramsSerializer: function(params) {
@@ -38,11 +40,11 @@ export default {
   onUploadProgress: function(progressEvent) {
     // Do whatever you want with the native progress event
   },
-
+  
   onDownloadProgress: function(progressEvent) {
     // Do whatever you want with the native progress event
   },
-
+  
   maxContentLength: 2000,
 
   validateStatus: function(status) {

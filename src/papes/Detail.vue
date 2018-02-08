@@ -1,5 +1,5 @@
 <template>
-	<div class="note container">
+	<div class="note">
 		<div class="detailContent">
 			<p class="title">{{ detail.title }}</p>
 			<p class="contentBlock" v-html="detail.content"></p>
@@ -21,6 +21,7 @@
 
 		mounted(){
 			this.getActicle(this.$route.params.id);
+			
 		},
 
 
@@ -55,8 +56,13 @@
 	}
 	.contentBlock{
 		line-height: 35px;
+		font-size:16px;
 	}
-	.container{
-		margin-top:0;
+	.note{
+		width:1200px;
+	    margin:0 auto;
+	    background: #fff;
+	    margin-bottom: 18px;
+	    min-height: 1000px;
 	}
 </style>

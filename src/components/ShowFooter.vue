@@ -1,7 +1,7 @@
 <template>
 	<div id="foter">
 		<footer class="footer">
-            <p>© Copyright 琼ICP备16001838号</p>
+            <p>©Copyright 琼ICP备16001838号</p>
         </footer>
 	</div>
 </template>
@@ -17,8 +17,9 @@
 		text-align: center;
 		background: #24242a;
 		color:#fff;
-		font-family: 'Open Sans', sans-serif;
+		font-family: 'YouYuan';
 		box-shadow: 0px 1px 9px 1px #cfcfcf;
+		font-size: 16px;
 	}
 	
 </style>

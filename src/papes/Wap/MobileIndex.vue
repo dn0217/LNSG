@@ -1,7 +1,6 @@
 <template>
-  <div class="index">
-    <ShowHeader @show-what="geet"></ShowHeader>
-    <div class="container">
+  <div class="Mobile">
+    <div class="MobileContainer">
       <ul>
        <li v-for="list in showList">
           <router-link :to="'/Detail/'+list.id">
@@ -15,13 +14,12 @@
        </li>
       </ul>
     </div>
-    <ShowFooter></ShowFooter>
   </div>
 </template>
 
 <script>
-import ShowHeader from '../components/ShowHeader.vue'
-import ShowFooter from '../components/ShowFooter.vue'
+// import ShowHeader from '../components/ShowHeader.vue'
+// import ShowFooter from '../components/ShowFooter.vue'
 export default {
   name: 'index',
 
@@ -29,10 +27,10 @@ export default {
     return {
       allList: [],
       showList: []
-      
+
     }
   },
-  
+
   created(){
     
     this.api.getActicle().then(res => {
@@ -50,10 +48,9 @@ export default {
           break;
 
         case 4:
-          //this.$router.push('/About')
           alert('暂没有个人信息哦！')
           break;
-          
+
         default:
           this.showList = [];
           this.allList.forEach(ele => {
@@ -69,46 +66,20 @@ export default {
   watch: {
     
   },
-  filter: {
-   
-  },
+
 
   components: {
-    ShowHeader,
-    ShowFooter
+    
   }
 
 }
 </script>
 
 <style lang="scss" scoped>
-  ul li{
-    width: 100%;
-    padding:20px 30px;
-    line-height: 30px;
-    overflow: hidden;
-    cursor: pointer;
-    border-bottom: 1px solid #ddd9;
-  }
-  .acticleTitle{
-    font-size: 22px;
-    color:#3a3a3a;
-  }
-  .acticleInfo{
-    span{
-      font-size: 14px;
-      margin-right: 50px;
-    }
-  }
-  .acticleNote{
-    display: -webkit-box;
-    -webkit-box-orient:vertical;
-    height: 45px;
-    line-height: 24px;
-    font-size: 14px;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    -webkit-line-clamp:2;
+  .Mobile{
+    width:10rem;
+    height: 100%;
+    margin: 0 auto;
   }
   
 </style>

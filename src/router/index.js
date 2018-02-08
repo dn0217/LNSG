@@ -4,11 +4,14 @@ import Index from '@/papes/Index'
 import About from '@/papes/About'
 import Detail from '@/papes/Detail'
 
+
+import MobildIndex from '@/papes/Wap/MobileIndex'
+
 Vue.use(Router)
 
 let souce = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? "vp" :  "pc";
-let indexPape = souce === 'pc' ? Index :  null //Wap组件待开发
-  
+let indexPape = souce === 'pc' ? Index :  MobildIndex 
+
 export default new Router({
   routes: [
     {
@@ -25,6 +28,6 @@ export default new Router({
       path: '/Detail/:id',
       name: 'Detail',
       component: Detail
-    },
+    }
   ]
 })

@@ -4,22 +4,23 @@ import router from './router'
 import store from './vuex/store'
 import api from "./api/api"
 
+import 'lib-flexible'
+
 Vue.config.productionTip = false
 let type = 'dev' 
 Vue.prototype.log = msg =>  'dev' == 'dev' ? console.log(msg) : void 0;
 Vue.prototype.api = api
-
 Vue.filter('filterTime', time => {
 	if (time) {
 			time = parseInt(time)
-			var oDate = new Date(time);
-			var y = oDate.getFullYear();
-			var m = oDate.getMonth() + 1;
-			var d = oDate.getDate();
-			var h = oDate.getHours();
-			var mm = oDate.getMinutes();
-			var s = oDate.getSeconds();
-			var week = "";
+			var oDate = new Date(time)
+			 ,y = oDate.getFullYear()
+			 ,m = oDate.getMonth() + 1
+			 ,d = oDate.getDate()
+			 ,h = oDate.getHours()
+			 ,mm = oDate.getMinutes()
+			 ,s = oDate.getSeconds()
+			 ,week = "";
 			switch (oDate.getDay()) {
 				case 0:
 					week = "星期天";
